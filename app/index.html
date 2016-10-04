@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app.css">
+
+</head>
+<body ng-app="app">
+
+  <header>
+    <p id="header-title">ITAScedule Angular Client</p>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1 no-float sidebar">
+        <ul>
+          <li><a ui-sref="calendar">Home</a></li>
+          <li><a ui-sref="teachersList">Teachers</a></li>
+          <li><a ui-sref="groupsList">Groups</a></li>
+          <li><a ui-sref="roomsList">Rooms</a></li>
+        </ul>
+      </div>
+      <div class="col-md-11 no-float" ui-view>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</body>
+
+  <!--<script src="admin/manage-calendar/manage-calendar.module.js"></script>
+  <script src="admin/manage-teachers/manage-teachers.module.js"></script>
+  <script src="admin/manager-rooms/manage-rooms.module.js"></script>-->
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+
+  <script src="app.module.js"></script>
+  <script src="admin/admin.module.js"></script>
+  <script src="admin/manage-groups.controller.js"></script>
+
+</html>

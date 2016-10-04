@@ -1,0 +1,45 @@
+<div class="text-center">
+    <div class="container">
+        <button ng-click="vm.showForm()">Create group</button>
+    </div>
+    <table st-table="vm.groupsList" class="table table-bordered table-hover">
+         <thead>
+             <tr class="success">
+                 <th>#</th>
+                 <th>Title</th>
+                 <th>Students count</th>
+                 <th>Start date</th>
+                 <th>End date</th>
+                 <th>Active</th>
+                 <th>Edit</th>
+                 <th>Remove</th>
+                 <th>Schedule</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="groupItem in vm.groupsList">
+                <th scope="row">{{$index+1}}</th>
+                <td>{{groupItem.title}}</td>
+                <td>{{groupItem.studentsCount}}</td>
+                <td>{{groupItem.startDate}}</td>
+                <td>{{groupItem.endDate}}</td>
+                <td>{{groupItem.active}}</td>
+                <td>
+                    <button id="editGroupItemButton" class="btn btn-sm" type="button">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </button>
+                </td>
+                <td>
+                    <button id="deleteGroupItemButton" class="btn btn-sm" type="button">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </td>
+                <td>
+                    <button id="scheduleGroupItemButton" class="btn btn-sm" type="button">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
