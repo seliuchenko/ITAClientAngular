@@ -1,7 +1,18 @@
+<style>
+    #createButton{
+        float: right;
+        margin-bottom: 5px;
+    }
+    #header{
+        color: black;
+        background-color: white;
+        font-weight: bold;
+        font-size: larger;
+    }
+</style>
+<header id="header">Managing Groups</header>
+<a id="createButton" ng-click="vm.createGroup()" class="btn btn-primary">Create Group</a>
 <div class="text-center">
-    <div class="container">
-        <button ng-click="vm.showForm()">Create group</button>
-    </div>
     <table st-table="vm.groupsList" class="table table-bordered table-hover">
          <thead>
              <tr class="success">
@@ -11,6 +22,8 @@
                  <th>Start date</th>
                  <th>End date</th>
                  <th>Active</th>
+                 <th>Created by</th>
+                 <th>Students</th>
                  <th>Edit</th>
                  <th>Remove</th>
                  <th>Schedule</th>
@@ -23,19 +36,25 @@
                 <td>{{groupItem.studentsCount}}</td>
                 <td>{{groupItem.startDate}}</td>
                 <td>{{groupItem.endDate}}</td>
-                <td>{{groupItem.active}}</td>
+                <td>{{groupItem.isActive}}</td>
+                <td>{{groupItem.creator}}</td>
                 <td>
-                    <button id="editGroupItemButton" class="btn btn-sm" type="button">
+                    <p ng-repeat="student in groupItem.users">
+                        {{student.fullName}}
+                    </p>
+                </td>
+                <td>
+                    <button id="editGroupItemButton" class="btn btn-sm btn-info" ng-click="vm.editGroup($index)" type="button">
                         <i class="glyphicon glyphicon-pencil"></i>
                     </button>
                 </td>
                 <td>
-                    <button id="deleteGroupItemButton" class="btn btn-sm" type="button">
+                    <button id="deleteGroupItemButton" class="btn btn-sm btn-danger" ng-click="vm.deleteGroup($index)" type="button">
                         <i class="glyphicon glyphicon-remove"></i>
                     </button>
                 </td>
                 <td>
-                    <button id="scheduleGroupItemButton" class="btn btn-sm" type="button">
+                    <button id="scheduleGroupItemButton" class="btn btn-sm btn-success" type="button">
                         <i class="glyphicon glyphicon-calendar"></i>
                     </button>
                 </td>

@@ -1,35 +1,6 @@
 /* app css stylesheet */
 
-.sidebar{
-  border-radius: 0;
-  border-width: 1px;
-  background-color: black;
-  color: white;
-}
 
-#createGroupButton{
-  background-color: #b3d4fc;
-  color: red;
-}
-html,body,.container {
-  height:100%;
-}
-.container {
-  display:table;
-  width: 100%;
-  padding: 1px 0 0 0; /*set left/right padding according to needs*/
-  box-sizing: border-box;
-}
-
-.row {
-  height: 100%;
-  display: table-row;
-}
-
-.row .no-float {
-  display: table-cell;
-  float: none;
-}
 header{
   background-color: black;
   height: 5%;

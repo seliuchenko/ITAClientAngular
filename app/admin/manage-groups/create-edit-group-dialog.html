@@ -1,0 +1,138 @@
+<style>
+    input.ng-invalid.ng-dirty{
+        border: 1px solid red;
+    }
+    .error_message{
+        color: red;
+    }
+    .modal-body{
+        float: left; width: 100%;
+    }
+    #backButton{
+        float: left;
+        margin-bottom: 5px;
+    }
+   /* #header{
+        color: black;
+        background-color: white;
+        font-weight: bold;
+        font-size: larger;
+    }*/
+
+
+
+</style>
+<p ng-show="vm.passedGroupObject==null">Creating Group</p>
+<p ng-show="vm.passedGroupObject!=null">Editing Group</p>
+<form name="CreateGroupForm">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3 left">
+                    <label for="group_NameInput">Enter name for the group:</label></br>
+                    <input id="group_NameInput" name="gni" type="text" ng-model="vm.groupTitle" placeholder="Name" required/></br>
+                    <span class="error_message" ng-show="CreateGroupForm.gni.$error.required && CreateGroupForm.gni.$dirty">Name of the group is required!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Students number:</label>
+                    <div class="input-group number-spinner">
+                <span class="input-group-btn data-dwn">
+                    <button class="btn btn-default btn-info" ng-click="vm.decrementValue()">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </span>
+                        <label class="form-control text-center" ng-bind="vm.value"></label>
+                        <span class="input-group-btn data-up">
+                    <button class="btn btn-default btn-info" ng-click="vm.incrementValue()">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Start date:</label>
+                        <p class="input-group">
+                            <input type="date" ng-model="vm.startDate" name="startDatePicker" required="true" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/" class="hidden">
+                            <input name="startDatePicker" ng-model="vm.startDate" type="text" class="form-control" required="true" uib-datepicker-popup="{{vm.format}}" is-open="vm.startPicker.opened" datepicker-options="dateOptions" close-text="Close"/>
+                            <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.popupStartPicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                        </p>
+                        <span ng-show="CreateGroupForm.startDatePicker.$invalid && CreateGroupForm.startDatePicker.$dirty" class="error_message">Not valid!</span>
+                        <span ng-show="vm.startDate<vm.currentDate" class="error_message">Start date is earlier then the currrent date!</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>End date:</label>
+                        <p class="input-group">
+                            <input type="date" ng-model="vm.endDate" name="endDatePicker" required="true" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/" class="hidden">
+                            <input type="text" name="endDatePicker" ng-model="vm.endDate" required="true" class="form-control" uib-datepicker-popup="{{vm.format}}" is-open="vm.endPicker.opened" datepicker-options="dateOptions" close-text="Close"/>
+                            <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.popupEndPicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                        </p>
+                        <span ng-show="CreateGroupForm.endDatePicker.$invalid && CreateGroupForm.endDatePicker.$dirty" class="error_message">Not valid!</span>
+                        <span ng-show="vm.endDate<vm.startDate" class="error_message">End date must be later than the start date.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1">
+                    <label>Teachers:</label>
+                </div>
+                <div class="col-md-3" id="teacherSelector">
+                    <!--<select ng-model="selectedTeacher">-->
+                    <select ng-model="vm.selectedTeacher" class="dropdown">
+                        <option ng-repeat="teacher in vm.allTeachers">{{teacher}}</option>
+                    </select>
+                    <button class="btn btn-info" ng-disabled="vm.allTeachers.length<1"  ng-click="vm.addTeacherToTheList()">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+            </div>
+            </br>
+            <div class="row">
+                <table class="table">
+                    <tr>
+                        <th>Added Teachers</th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="teacher in vm.addedTeachersList">
+                        <td>{{teacher}}</td>
+                        <td>
+                            <button ng-click="vm.removeTeacherFromTheList($index)">-</button>
+                        </td>
+                    </tr>
+                </table>
+                <span ng-show="vm.addedTeachersList.length<1" class="error_message">List of teachers is empty!</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+        <div class="form-group">
+            <div class="row">
+                <!--<div class="col-md-6">-->
+                <button class="btn btn-success" ng-disabled="CreateGroupForm.$invalid" ng-click="vm.createGroup()" id="createButton">Create</button>
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                <a ui-sref="groupsDashboard.listGroups" class="btn btn-warning" ng-click="vm.cancelCreation()" id="cancelButton">Cancel</a>
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</form>

@@ -17,25 +17,24 @@
 </head>
 <body ng-app="app">
 
-  <header>
-    <p id="header-title">ITAScedule Angular Client</p>
+ <header>
+    <p id="header-title">ITASchedule Angular Client</p>
   </header>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-1 no-float sidebar">
-        <ul>
-          <li><a ui-sref="calendar">Home</a></li>
-          <li><a ui-sref="teachersList">Teachers</a></li>
-          <li><a ui-sref="groupsList">Groups</a></li>
-          <li><a ui-sref="roomsList">Rooms</a></li>
-        </ul>
-      </div>
-      <div class="col-md-11 no-float" ui-view>
+ <div class="row">
+   <div class="col-md-2" style="display: table-cell;">
+     <ul>
+       <li><a ui-sref="calendar">Home</a></li>
+       <li><a ui-sref="teachersList">Teachers</a></li>
+       <li><a ui-sref="groupsDashboard.listGroups">Groups</a></li>
+       <li><a ui-sref="roomsList">Rooms</a></li>
+     </ul>
+   </div>
+   <div class="col-md-9" style="display: table-cell;" ui-view>
 
-      </div>
+   </div>
+ </div>
 
-    </div>
-  </div>
+
 
 
 
@@ -51,10 +50,10 @@
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <!--<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>-->
 
   <script src="app.module.js"></script>
   <script src="admin/admin.module.js"></script>
-  <script src="admin/manage-groups.controller.js"></script>
+  <script src="admin/manage-groups/manage-groups.controller.js"></script>
 
 </html>
